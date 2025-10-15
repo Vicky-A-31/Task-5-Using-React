@@ -11,14 +11,16 @@ export class MainComponent extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
+  // getting input from input box
   handleInput = (e) => {
-    if (e.target.placeholder === "row") {
-      this.setState({ ...this.state, row: Number(e.target.value.trim()) });
+    if (e.target.name === "row") {
+      this.setState({row: Number(e.target.value.trim())});
     } else {
-      this.setState({ ...this.state, col: Number(e.target.value.trim()) });
+      this.setState({ col: Number(e.target.value.trim()) });
     }
   };
 
+  // generate a random color in hex format 
   generateRandomColor = () => {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -29,6 +31,7 @@ export class MainComponent extends Component {
     return color;
   };
 
+  // generate array of color code 
   handleData(e) {
     e.preventDefault();
     if (this.state.row > 0 && this.state.col > 0) {
@@ -42,16 +45,16 @@ export class MainComponent extends Component {
       }
       console.log(matrix);
       console.log(matrix.flat());
-    this.props.sendData(this.state.row, this.state.col, matrix.flat());
+    this.props.sendData(this.state.row, this.state.col, matrix);
   }
 }
 
   render() {
     return (
       <>
-        <form onSubmit={this.handleData}>
+        <form className="p-1 p-md-3" id="form" autoComplete="off" onSubmit={this.handleData} noValidate>
           <Input handleInput={this.handleInput} />
-          <button type="submit">Generate</button>
+          <button type="submit" className="d-block mx-auto my-2 my-md-3">Generate</button>
         </form>
       </>
     );
