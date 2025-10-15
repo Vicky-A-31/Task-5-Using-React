@@ -5,13 +5,15 @@ export class Input extends Component {
   render() {
     return (
       <>
-      <div>
+      <div className='d-flex'>
+        <div className='m-2 m-md-3'>
         <label htmlFor="row">Row</label>
-        <input type="text" placeholder='row' id='row' onChange={this.props.handleInput} />
+        <input type="number" placeholder='row' name='row' id='row' onChange={this.props.handleInput} />
       </div>
-      <div>
+      <div className='m-2 m-md-3'>
         <label htmlFor="col">Column</label>
-        <input type="text" placeholder='column' id='col' onChange={this.props.handleInput} />
+        <input type="number" placeholder='column' name='col' id='col' onChange={this.props.handleInput} />
+      </div>
       </div>
       </>
     )
