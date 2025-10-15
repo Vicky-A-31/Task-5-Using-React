@@ -1,57 +1,53 @@
 import React, { Component } from "react";
 
 export class Result extends Component {
-  
-
-  handleColorClick = (color) => {
-    this.props.clickedCell(color);
-  };
-
-
   render() {
-    /*
-    let count = 0;
-    const divArray = [];
+
+    let list = []
+    let count = 0; // count for key prop every child
     for(let i=0; i<this.props.row; i++) {
-        for(let j=0; j<this.props.col; j++) {   
-            divArray.push(
-                <div 
-                    key={count++}
-                    onClick={() => this.handleColorClick(this.props.matrix[i][j])}
-                    style={{
-                        display: 'inline-block',
-                        width: '100px',
-                        backgroundColor: this.props.matrix[i][j],
-                        height: '100px',
-                        border: '1px solid black',
-                    }}
-                ></div>)
+        let rowCollection = []
+        for(let j=0; j<this.props.col; j++) {
+            rowCollection.push(
+                <div
+                key={count++}
+                style={{
+                  display: "inline-block",
+                  backgroundColor: `${this.props.matrix[i][j]}`,
+                  border: "1px solid ",
+                  width: "100px",
+                  height: "100px",
+                }}
+                onClick={() => this.props.clickedCell(this.props.matrix[i][j])}
+                >
+                </div>
+            )
         }
+        list.push(<div>{rowCollection}</div>)
     }
-    console.log(divArray);
-    console.log(typeof divArray)
-    */
 
     return (
       <>
-        <div>
-            {
-                this.props.matrix.map((element, index) => {
-                    return (
-                        <div
-                            key={index}
-                            style={{
-                                display: 'inline-block',
-                                width: '100px',
-                                backgroundColor: element,
-                                height: '100px',
-                                border: '1px solid black',
-                            }}
-                            onClick={() => this.handleColorClick(element)}
-                        ></div>
-                    )
-                })
-            }
+        <div id="grid-container">
+            {list}
+            
+          {/* 
+          // intha approach ku matrix ah flat pannanaum i mean 1D array mathanum
+          {this.props.matrix.map((element, index) => {
+            return (
+              <div
+                key={index}
+                style={{
+                  display: "inline-block",
+                  backgroundColor: element,
+                  border: "1px solid ",
+                  width: "100px",
+                  height: "100px",
+                }}
+                onClick={() => this.props.clickedCell(element)}
+              ></div>
+            );
+          })} */}
         </div>
       </>
     );
